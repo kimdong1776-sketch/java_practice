@@ -4,5 +4,5 @@
 /**
  * 
  */
-module test1 {
+module 실습2 {
 }
