@@ -7,8 +7,8 @@
 		*/
 		/*
  * 변수 (variable)
-		 * =>변핤 있는 수? (x) from 수학
-		 * =>데이터를 저장하는 공간(on Memory)!
+		 * =>변할 수 있는 수? (x) from 수학
+		 * =>데이터를 저장하는 공간에 붙인 이름(on Memory)!
 		 *  built in variable and Reference variable(빌트인이 아닌 거 모두)
 		 *  빌트인은 byte short int long float double char boolean
 		 *  레퍼런스는 Scanner(4 or 8 Bytes) String  Array Cloass Object 
