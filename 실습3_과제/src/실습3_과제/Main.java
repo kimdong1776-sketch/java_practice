@@ -72,7 +72,7 @@ public class Main {
 	
 		
 		//6.33
-		practice.Guess_number_6_31();
+		practice.playCraps_6_33();
 		
 	}
 	

@@ -102,47 +102,103 @@ public class practice {
 		
 	}
 	
-	public static void Guess_number_6_31() {
-	    Scanner input1 = new Scanner(System.in);
-	    
-	    while(true) {
-	        System.out.println("Guess a number between 1 and 1000.");
-	        int rn = 1 + randomNumbers.nextInt(1000);
-	        int gnum;
-	        int try_count = 0; 
+	private enum Status {CONTINUE, WON, LOST};
 
-	        while(true) {
-	            gnum = input1.nextInt();
-	            try_count++; 
+    private static final int SNAKE_EYES = 2;
+    private static final int TREY = 3;
+    private static final int SEVEN = 7;
+    private static final int YO_LEVEN = 11;
+    private static final int BOX_CARS = 12;
 
-	            if(gnum < rn) {
-	                System.out.println("Too low. Try again.");
-	            }
-	            else if(gnum > rn) {
-	                System.out.println("Too high. Try again.");
-	            }
-	            else {
-	                System.out.println("Congratulations. You guessed the number!");
-	                
-	          
-	                if(try_count < 10) {
-	                    System.out.println("Either you know the secret or you got lucky!");
-	                } else if(try_count == 10) {
-	                    System.out.println("Aha! You know the secret!");
-	                } else {
-	                    System.out.println("You should be able to do better!");
-	                }
+    public static void displayChatter() {
+        int randomChoice = randomNumbers.nextInt(3);
+        
+        switch (randomChoice) {
+            case 0:
+                System.out.println("Oh, you're going for broke, huh?");
+                break;
+            case 1:
+                System.out.println("Aw c'mon, take a chance!");
+                break;
+            case 2:
+                System.out.println("You're up big. Now's the time to cash in your chips!");
+                break;
+        }
+    }
 
-	                System.out.println("\nTry again? Yes : 1; NO : 0");
-	                int choice = input1.nextInt();
-	                if(choice == 1) {
-	                    break;
-	                } else {
-	                    return;
-	                }
-	            }
-	        }
-	    }
-	}
-	
+    public static void playCraps_6_33() {
+        Scanner input = new Scanner(System.in);
+        int bankBalance = 1000;
+
+        while (bankBalance > 0) {
+            System.out.printf("Current balance: $%d\n", bankBalance);
+            displayChatter();
+
+            System.out.print("Enter your wager: ");
+            int wager = input.nextInt();
+
+            while (wager <= 0 || wager > bankBalance) {
+                System.out.print("Invalid wager. Enter a valid wager: ");
+                wager = input.nextInt();
+            }
+
+            int myPoint = 0;
+            Status gameStatus;
+            int sumOfDice = rollDice();
+
+            switch (sumOfDice) {
+                case SEVEN:
+                case YO_LEVEN:
+                    gameStatus = Status.WON;
+                    break;
+                case SNAKE_EYES:
+                case TREY:
+                case BOX_CARS:
+                    gameStatus = Status.LOST;
+                    break;
+                default:
+                    gameStatus = Status.CONTINUE;
+                    myPoint = sumOfDice;
+                    System.out.printf("Point is %d\n", myPoint);
+                    break;
+            }
+
+            while (gameStatus == Status.CONTINUE) {
+                sumOfDice = rollDice();
+
+                if (sumOfDice == myPoint) {
+                    gameStatus = Status.WON;
+                } else if (sumOfDice == SEVEN) {
+                    gameStatus = Status.LOST;
+                }
+            }
+
+            if (gameStatus == Status.WON) {
+                bankBalance += wager;
+                System.out.printf("Player wins! New balance: $%d\n", bankBalance);
+            } else {
+                bankBalance -= wager;
+                System.out.printf("Player loses. New balance: $%d\n", bankBalance);
+
+                if (bankBalance <= 0) {
+                    System.out.println("Sorry. You busted!");
+                    break;
+                }
+            }
+            
+            System.out.print("Enter 1 to play again, 0 to stop: ");
+            if (input.nextInt() == 0) {
+                break;
+            }
+        }
+    }
+
+    public static int rollDice() {
+        int die1 = 1 + randomNumbers.nextInt(6);
+        int die2 = 1 + randomNumbers.nextInt(6);
+        int sum = die1 + die2;
+        System.out.printf("Player rolled %d + %d = %d\n", die1, die2, sum);
+        return sum;
+    }
 }
+	
