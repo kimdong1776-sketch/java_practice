@@ -19,7 +19,6 @@ public class find {
 				max_2 = num;
 			}
 		}
-		System.out.printf("4.3\n");
 		System.out.printf("largest : %d \n", max);
 		System.out.printf("second largest : %d", max_2);
 	}

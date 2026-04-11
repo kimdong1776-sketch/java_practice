@@ -57,8 +57,6 @@ public class practice {
 		    
 		    while (n > 0) {
 		        int cur_digit = n % 10;  
-		        
-		       
 		        result_n = (result_n * 10) + cur_digit; 
 		        
 		        n /= 10;             
