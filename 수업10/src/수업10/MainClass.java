@@ -1,5 +1,8 @@
 package 수업10;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class MainClass {
@@ -9,8 +12,8 @@ public class MainClass {
 		result = numerator / denominator;
 		return result;
 	}
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner (System.in);
 		System.out.println("Enter two numbers : ");
 		int num1, num2, result;
@@ -24,5 +27,11 @@ public class MainClass {
 		} finally {
 			System.out.println("--------->");
 		}
+		
+		/*
+		 * try {무조건 해}
+		 * catch(A e){e가 발생하면 해}
+		 * finally{발생하든 안 하든 해}
+		 * */
 	}
 }
