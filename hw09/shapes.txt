@@ -1,0 +1,4 @@
+Diamond 3 7 #
+RightTriangle 3 4 @
+Rectangle 2 4 5 &
+HorizontalLine 1 3 #
