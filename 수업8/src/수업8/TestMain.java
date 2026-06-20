@@ -19,6 +19,7 @@ public class TestMain {
 		//ival.
 //		ArrayList<int> intList = new ArrayList<int>();// err
 		ArrayList<Integer> intList = new ArrayList<Integer>();
+		intList.add(ival);
 	}
 	
 	
@@ -83,7 +84,7 @@ public class TestMain {
 		box.draw();
 		
 //		box = rect;//는 에러
-		box = (borderRectangle)rect;//에러 안남. 명시적 타입 캐스팅
+		box = (borderRectangle)rect;//문법 에러 안남. 컴파일에선 오류 명시적 타입 캐스팅
 		System.out.println(rect instanceof borderRectangle); //{reference} instanceof {ClassName}
 		//객체 타입을 확인하는 연산자이며 형 변환 가능 여부를 확인할 수 있다.
 		/*System.out.println( parent instanceof Parent );  // true
@@ -110,17 +111,17 @@ public class TestMain {
 		
 		
 		movable m;
-		m = rect;
+		m = rect;//사각형의 이동전용 레퍼런스 변수로 보겠다
 		m.move(0, 0);
 		m.reszie(0);
 		printable p;
-		p = rect;
+		p = rect; //사각형으 프린트 전용 레퍼런스 변수로 보겠다.
 		p.print();
 		p.printInfo();
 		
 		s = rect;
 		s.draw();
-//		s.resize(0);//불가능.
+//		s.resize(0);//불가능. 다운 캐스팅을 해야함. (Rectangle)s처럼 or (moveable)s
 		
 	}
 }

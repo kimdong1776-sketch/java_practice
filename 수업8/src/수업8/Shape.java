@@ -35,5 +35,5 @@ public abstract class Shape { //추상 클래스
 	public abstract void draw(); 
 	// 추상 메소드 {}이 없음. 구현하면 안됨. 만약 Class가 abstract이고,
 	//메서드 조차 abstract이면 그 메서드는 상속 받은 애가. 무조건 메서드를 구현 해야함. 
-	//지금 상황에선 Rectagle 에서 draw() 오버라이딩?을 꼭 해줘야함. 이 의미를 내포하고 있음.
+	//지금 상황에선 Rectagle 에서 draw() 오버라이딩을 꼭 해줘야함. 이 의미를 내포하고 있음.
 }
